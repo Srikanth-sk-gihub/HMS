@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+    <line>
+      <![CDATA[createProject]]>
+    </line>
+  </reporter-output>
+  <suite started-at="2025-09-22T22:47:44 IST" name="Suite" finished-at="2025-09-22T22:47:44 IST" duration-ms="94">
+    <groups>
+    </groups>
+    <test started-at="2025-09-22T22:47:44 IST" name="Test" finished-at="2025-09-22T22:47:44 IST" duration-ms="94">
+      <class name="com.hms.testscript.TestCaseHms">
+        <test-method signature="createProject()[pri:0, instance:com.hms.testscript.TestCaseHms@55182842]" started-at="2025-09-22T22:47:44 IST" name="createProject" finished-at="2025-09-22T22:47:44 IST" duration-ms="16" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[createProject]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- createProject -->
+      </class> <!-- com.hms.testscript.TestCaseHms -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>
