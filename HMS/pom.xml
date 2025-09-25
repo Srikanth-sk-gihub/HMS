@@ -7,7 +7,7 @@
 <dependency>
     <groupId>org.seleniumhq.selenium</groupId>
     <artifactId>selenium-java</artifactId>
-    <version>4.35.0</version>
+    <version>LATEST</version>
 </dependency>
 <dependency>
     <groupId>org.apache.poi</groupId>
@@ -23,7 +23,6 @@
     <groupId>org.testng</groupId>
     <artifactId>testng</artifactId>
     <version>7.11.0</version>
-    <scope>test</scope>
 </dependency>
   </dependencies>
   <build>
@@ -40,4 +39,4 @@
       </plugin>  
 </plugins>
   </build>
-</project>
+</project> 

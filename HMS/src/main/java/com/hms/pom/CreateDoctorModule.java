@@ -4,16 +4,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+import org.testng.Reporter;
 
 public class CreateDoctorModule 
 {
+	
 	@FindBy(xpath = "//button[@class='btn btn-primary pull-right']")
 	private WebElement addAppoitmentBtn;
 	@FindBy(name = "date_timestamp")
 	private WebElement dateDrop;
-	@FindBy(xpath = "//th[text()='2025']")
-	private WebElement selectYaer;
-	@FindBy(xpath = "//span[@class='month active']")
+	@FindBy(xpath = "//input[@class='form-control datepicker']")
 	private WebElement selectMonth;
 	@FindBy(xpath = "//td[@class='active day']")
 	private WebElement selectDay;
@@ -23,25 +24,33 @@ public class CreateDoctorModule
 	private WebElement selectTime;
 	@FindBy(xpath = "//span[text()='Select Patient']")
 	private WebElement selectPatient;
-	@FindBy(xpath = "//input[@class='select2-input']")
+	@FindBy(xpath = "(//input[@type='text'])[4]")
 	private WebElement search;
-	@FindBy(name = "notify")
-	private WebElement notifyCheckBox;
+	@FindBy(xpath = "//span[text()='soni']")
+	private WebElement selectName;
+	
 	@FindBy(xpath = "//input[@class='btn btn-success']")
 	private WebElement submittBtn;
+	@FindBy(xpath = "//div[@class='toast-message']")
+	private WebElement msgLink;
 	public CreateDoctorModule(WebDriver driver)
 	{
 		PageFactory.initElements(driver, this);
 	}
+
+
+
+	public WebElement getSelectName() {
+		return selectName;
+	}
+
 	public WebElement getAddAppoitmentBtn() {
 		return addAppoitmentBtn;
 	}
 	public WebElement getDateDrop() {
 		return dateDrop;
 	}
-	public WebElement getSelectYaer() {
-		return selectYaer;
-	}
+	
 	public WebElement getSelectMonth() {
 		return selectMonth;
 	}
@@ -60,11 +69,18 @@ public class CreateDoctorModule
 	public WebElement getSearch() {
 		return search;
 	}
-	public WebElement getNotifyCheckBox() {
-		return notifyCheckBox;
-	}
+//	public WebElement getNotifyCheckBox() {
+//		return notifyCheckBox;
+//	}
 	public WebElement getSubmittBtn() {
 		return submittBtn;
+	}
+	
+	public void setMsgLink(String expected) {
+		 String succMsg=msgLink.getText();
+		 Reporter.log(succMsg,true);
+		 
+		 Assert.assertEquals(succMsg, expected,"Appointment Info Not Save Succeefull");
 	}
 	
 

@@ -1,33 +1,48 @@
 package com.hms.generic;
 
+import java.io.IOException;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriver.Timeouts;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+
+import com.hms.pom.HomePage;
+import com.hms.pom.LoginPage;
 
 public class BaseClass 
 {
-	
 	public static WebDriver driver;
-	public void OpenBrowser()
+	public static FileLib fl=new FileLib();
+	@BeforeTest
+	public void OpenBrowser() throws IOException
 	{
 	    driver=new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-		driver.get("http://106.51.75.38:9017/");
+		String url=fl.readProperty("url");
+		driver.get(url);
 	}
-	public void Login()
+	@BeforeMethod
+	public void Login() throws IOException
 	{
-		driver.findElement(By.id("email")).sendKeys("doctor@doc.com");
-		driver.findElement(By.id("password")).sendKeys("Rekha@098");
-		driver.findElement(By.xpath("//button[@type='submit']")).click();
+		LoginPage lp=new LoginPage(driver);
+		String un=fl.readProperty("un");
+		String pwd=fl.readProperty("pwd");
+		lp.setLogin(un, pwd);
 	}
+	@AfterMethod
 	public void Logout()
 	{
-		driver.findElement(By.linkText("=\"http://106.51.75.38:9017/index.php?login/logout\"")).click();
+		HomePage hp=new HomePage(driver);
+		hp.setLogoutLink();
 	}
+	@AfterTest
 	public void close()
 	{
 		driver.quit();
